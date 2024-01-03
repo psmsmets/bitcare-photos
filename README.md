@@ -27,7 +27,7 @@ function downloadFileAsync(url, fileName) {
       setTimeout(() => {
         document.body.removeChild(anchor);
         resolve();
-      }, 100); // Adjust the delay as needed
+      }, 150); // Adjust the delay as needed
     });
 
     anchor.click();
