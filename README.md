@@ -44,12 +44,12 @@ async function processImagesAsync(prefix = '') {
     }
 
     var url = img.src.replace('medium', 'original');
-    var name = prefix + url.replace('https://app.bitcare.com/photos/', '').replace('/original', '');
+    var fileName = prefix + url.replace('https://app.bitcare.com/photos/', '').replace('/original', '');
 
-    console.log(url, name);
+    console.log(url, fileName);
 
     // Use await to wait for the download to complete before processing the next image
-    await downloadFileAsync(url, name);
+    await downloadFileAsync(url, fileName);
   }
 }
 
