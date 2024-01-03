@@ -34,26 +34,34 @@ function downloadFileAsync(url, fileName) {
   });
 }
 
-// Function to process images asynchronously with an optional prefix
-async function processImagesAsync(prefix = '') {
+// Function to process images asynchronously with an optional prefix and reversed order
+async function processImagesAsync(prefix = '', reverseOrder = false) {
   var images = document.querySelectorAll('img[src^="/photos/"]');
+  
+  // Convert NodeList to an array and reverse it if needed
+  var imageArray = Array.from(images);
+  if (reverseOrder) {
+    imageArray.reverse();
+  }
 
-  for (var img of images) {
+  for (var img of imageArray) {
     if (!img.src.includes("medium")) {
       continue;
     }
 
     var url = img.src.replace('medium', 'original');
-    var fileName = prefix + url.replace('https://app.bitcare.com/photos/', '').replace('/original', '');
+    var name = url.replace('https://app.bitcare.com/photos/', '').replace('/original', '');
 
-    console.log(url, fileName);
+    // Append the prefix to the variable name
+    name = prefix + name;
+
+    console.log(url, name);
 
     // Use await to wait for the download to complete before processing the next image
-    await downloadFileAsync(url, fileName);
+    await downloadFileAsync(url, name);
   }
 }
 
-// Call the asynchronous function with an optional prefix
-processImagesAsync('prefix_');
-
+// Call the asynchronous function with an optional prefix and reversed order
+processImagesAsync('prefix_', true);
 ```
