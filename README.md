@@ -36,6 +36,7 @@ function downloadFileAsync(url, fileName) {
 
 // Function to process images asynchronously with an optional prefix and reversed order
 async function processImagesAsync(prefix = '', reverseOrder = true) {
+  // Load all images
   var images = document.querySelectorAll('img[src^="/photos/"]');
   
   // Convert NodeList to an array and reverse it if needed
@@ -45,20 +46,20 @@ async function processImagesAsync(prefix = '', reverseOrder = true) {
   }
 
   for (var img of imageArray) {
-    if (!img.src.includes("medium")) {
+    // Skip any image that does not ends with "/medium.jpg".
+    if (!img.src.includes("/medium.jpg")) {
       continue;
     }
 
+    // Set the url to the original image and the filenNme based on the numeric part of the url
     var url = img.src.replace('medium', 'original');
-    var name = url.replace('https://app.bitcare.com/photos/', '').replace('/original', '');
+    var fileName = prefix + url.replace('https://app.bitcare.com/photos/', '').replace('/original', '');
 
-    // Append the prefix to the variable name
-    name = prefix + name;
-
-    console.log(url, name);
+    // Provide some feedback of the file that shall be downloaded
+    console.log(url, fileName);
 
     // Use await to wait for the download to complete before processing the next image
-    await downloadFileAsync(url, name);
+    await downloadFileAsync(url, fileName);
   }
 }
 // Set the prefix to your child's name (white spaces are replaced by underscores).
