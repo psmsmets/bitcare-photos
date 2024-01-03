@@ -8,7 +8,7 @@ To download all photo's keep pressing the `load more` button.
 ## Download all photo's using Safari:
 1. Enable developer tools (`settings` > `advanced` > enable `Show features for web developers`)
 2. Develop > `Show JavaScript Console` (or simply `Option` + `Command` + `C`)
-3. Copy-paste the JavaScript code below and press enter. 
+3. Copy-paste the JavaScript code below, change `prefix_` in whatever you want, press enter and wait.
 
 ## JavaScript code
 ```javascript
@@ -34,8 +34,8 @@ function downloadFileAsync(url, fileName) {
   });
 }
 
-// Function to process images asynchronously
-async function processImagesAsync() {
+// Function to process images asynchronously with an optional prefix
+async function processImagesAsync(prefix = '') {
   var images = document.querySelectorAll('img[src^="/photos/"]');
 
   for (var img of images) {
@@ -44,7 +44,7 @@ async function processImagesAsync() {
     }
 
     var url = img.src.replace('medium', 'original');
-    var name = url.replace('https://app.bitcare.com/photos/', '').replace('/original', '');
+    var name = prefix + url.replace('https://app.bitcare.com/photos/', '').replace('/original', '');
 
     console.log(url, name);
 
@@ -53,6 +53,7 @@ async function processImagesAsync() {
   }
 }
 
-// Call the asynchronous function
-processImagesAsync();
+// Call the asynchronous function with an optional prefix
+processImagesAsync('prefix_');
+
 ```
