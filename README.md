@@ -8,9 +8,7 @@ To download all photos keep pressing the `Show more` button until all photos are
 ## Download all photos using Safari:
 1. Enable developer tools: navigate to `settings` > `advanced` > enable `Show features for web developers`
 2. Open the JavaScript console: navigate to `Develop` > `Show JavaScript Console` (or simply press `Option` + `Command` + `C`)
-3. Copy-paste the JavaScript code below.
-4. Change `prefix_` at the end in whatever you want, for example, your child's name.
-5. Press enter and wait. Photos should start flying in.
+3. Copy-paste the JavaScript code below, press enter and wait. Photos should start flying in.
 
 ## JavaScript code
 ```javascript
@@ -37,7 +35,7 @@ function downloadFileAsync(url, fileName) {
 }
 
 // Function to process images asynchronously with an optional prefix and reversed order
-async function processImagesAsync(prefix = '', reverseOrder = false) {
+async function processImagesAsync(prefix = '', reverseOrder = true) {
   var images = document.querySelectorAll('img[src^="/photos/"]');
   
   // Convert NodeList to an array and reverse it if needed
@@ -63,7 +61,9 @@ async function processImagesAsync(prefix = '', reverseOrder = false) {
     await downloadFileAsync(url, name);
   }
 }
+// Set the prefix to your child's name (white spaces are replaced by underscores).
+var prefix = document.querySelector(".h2").textContent.replaceAll(' ', '_') + '_';
 
 // Call the asynchronous function with an optional prefix and reversed order
-processImagesAsync('prefix_', true);
+processImagesAsync(prefix, true);
 ```
