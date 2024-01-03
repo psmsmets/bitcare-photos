@@ -12,36 +12,47 @@ To download all photo's keep pressing the `load more` button.
 
 ## JavaScript code
 ```javascript
-document.querySelectorAll('img[src^="/photos/"]').forEach(
-  img => {
-
-    // check
-    if (!img.src.includes("medium")) {
-      return;
-    }
-
-    // extract url and replace medium to original
-    var url = img.src.replace('medium', 'original');
-
-    // set filename based on the numeric part
-    var name = url.replace('https://app.bitcare.com/photos/', '').replace('/original', '');
-
-    // download
-    console.log(url, name);
-
-    // Create a hidden anchor element
+// Function to download a file asynchronously
+function downloadFileAsync(url, fileName) {
+  return new Promise((resolve, reject) => {
     var anchor = document.createElement('a');
-    anchor.setAttribute("id", "name");
     anchor.style.display = 'none';
-    anchor.href = url;
-    anchor.download = name;
+    anchor.setAttribute("id", fileName);
     document.body.appendChild(anchor);
 
-    // Trigger a click event on the anchor to start the download
-    anchor.click();
+    anchor.href = url;
+    anchor.download = fileName;
 
-    // Remove the anchor from the document
-    document.body.removeChild(anchor);
+    anchor.addEventListener('click', function() {
+      setTimeout(() => {
+        document.body.removeChild(anchor);
+        resolve();
+      }, 100); // Adjust the delay as needed
+    });
+
+    anchor.click();
+  });
+}
+
+// Function to process images asynchronously
+async function processImagesAsync() {
+  var images = document.querySelectorAll('img[src^="/photos/"]');
+
+  for (var img of images) {
+    if (!img.src.includes("medium")) {
+      continue;
+    }
+
+    var url = img.src.replace('medium', 'original');
+    var name = url.replace('https://app.bitcare.com/photos/', '').replace('/original', '');
+
+    console.log(url, name);
+
+    // Use await to wait for the download to complete before processing the next image
+    await downloadFileAsync(url, name);
   }
-);
+}
+
+// Call the asynchronous function
+processImagesAsync();
 ```
