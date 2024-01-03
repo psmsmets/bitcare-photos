@@ -1,14 +1,16 @@
 # bitcare-photos
-A simple javascript trick to download all photo's from your child's bitcare profile.
+A simple javascript trick to download all photos from your child's bitcare profile.
 
 ## Go the the photo's
-Navigate to the photo's page. Only displayed photo's will be downloaded (at the original/full resolution). 
-To download all photo's keep pressing the `load more` button.
+Navigate to the photos page. Only displayed photos will be downloaded (at the original/full resolution). 
+To download all photos keep pressing the `Show more` button until all photos are shown.
 
 ## Download all photo's using Safari:
-1. Enable developer tools (`settings` > `advanced` > enable `Show features for web developers`)
-2. Develop > `Show JavaScript Console` (or simply `Option` + `Command` + `C`)
-3. Copy-paste the JavaScript code below, change `prefix_` in whatever you want, press enter and wait.
+1. Enable developer tools: navigate to `settings` > `advanced` > enable `Show features for web developers`
+2. Open the JavaScript console: navigate to `Develop` > `Show JavaScript Console` (or simply press `Option` + `Command` + `C`)
+3. Copy-paste the JavaScript code below.
+4. Change `prefix_` at the end in whatever you want, for example, your child's name.
+5. Press enter and wait. Photos should start flying in.
 
 ## JavaScript code
 ```javascript
