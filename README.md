@@ -5,6 +5,8 @@ Step-by-step instructions in [English](#instructions) & [Nederlands](#instructie
 
 ## Instructions
 
+### Step 0 - Login to Bitcare
+
 ### Step 1 - Navigate to the Photos Page
 
 Only displayed photos will be downloaded. 
@@ -47,6 +49,8 @@ Photos shall be appear in your downloads.
 
 
 ## Instructies
+
+### Stap 0 - Login op Bitcare
 
 ### Stap 1 - Ga naar de Foto Pagina
 
