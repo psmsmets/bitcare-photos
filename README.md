@@ -38,7 +38,7 @@ To download all photos keep pressing the `Show more` button until all photos are
 
 ### Step 3 - Download all photos
 
-Copy-paste the [JavaScript code](#javascript-code) below, press enter and wait. 
+Copy-paste the [JavaScript code](#javascript-code) below in the console (after the `>` sign), press enter and wait. 
 Photos shall be appear in your downloads.
 
 ### Additional Notes
@@ -83,7 +83,7 @@ Om alle foto's te downloaden, blijf op de `Meer tonen`-knop drukken totdat alle 
 
 ### Stap 3 - Download alle foto's
 
-Kopieer-plak de [JavaScript-code](#javaScript-code) hieronder, druk op Enter en wacht.
+Kopieer-plak de [JavaScript-code](#javaScript-code) hieronder in de console (na het `>` teken), druk op Enter en wacht.
 Foto's zullen verschijnen in je downloads.
 
 ### Aanvullende notities
