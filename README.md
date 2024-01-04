@@ -5,93 +5,83 @@ Step-by-step instructions in [English](#instructions) & [Nederlands](#instructie
 
 ## Instructions
 
-### Step 0 - Login to Bitcare
+### Step 0: Login to Bitcare
 
-### Step 1 - Navigate to the Photos Page
+### Step 1: Navigate to the Photos Page
 
-Only displayed photos will be downloaded. 
-To download all photos keep pressing the `Show more` button until all photos are shown.
+- Only displayed photos will be downloaded.
+- To download all photos, continuously press the `Show more` button until all photos are shown.
 
-### Step 2 - Prepare your browser
+### Step 2: Prepare your browser
 
 #### Safari:
-1.  Enable developer tools:
+1. Enable developer tools:
+   - Navigate to settings
+   - Click on the `Advanced` tab
+   - Enable `Show features for web developers`
 
-   *   Navigate to settings
-   *   Click on the `Advanced`-tab
-   *   Enable `Show features for web developers`
-
-2.  Open the JavaScript console:
-
-   *   In the menu bar, go to `Develop` > `Show JavaScript Console`
+2. Open the JavaScript console:
+   - In the menu bar, go to `Develop` > `Show JavaScript Console`
 
 #### Chrome or Brave:
-1.  Disable file location pop-ups:
+1. Disable file location pop-ups:
+   - Navigate to settings
+   - Go to the `Downloads` tab
+   - Disable `Ask where to save each file before downloading`
 
-   *   Navigate to settings
-   *   Go to the `Downloads`-tab
-   *   Disable `Ask where to save each file before downloading`
+2. Open the JavaScript console:
+   - In the menu bar, go to `View` > `Developer` > `Show JavaScript Console`
 
-2.  Open the JavaScript console:
+### Step 3: Download all photos
 
-   *   In the menu bar, go to `View` > `Developer` > `Show JavaScript Console`
-
-### Step 3 - Download all photos
-
-Copy-paste the [JavaScript code](#javascript-code) below in the console (after the `>` sign), press enter and wait. 
-Photos shall be appear in your downloads.
+Copy-paste the [JavaScript code](#javascript-code) in the console (after the `>` sign), press enter, and wait. 
+Photos will appear in your downloads.
 
 ### Additional Notes
 
-*   Photos have their unique id as filename and the original/full resolution.
-*   The download order shall be from old to new.
-    As such, the file timestamp provides the order of appearence on bitcare (sort by date, old to new).
-
+- Photos have a unique ID as the filename and are in the original/full resolution.
+- The download order will be from old to new, based on the file timestamp.
+  Sort by date, old to new, to see the order of appearance on Bitcare.
 
 ## Instructies
 
-### Stap 0 - Login op Bitcare
+### Stap 0: Log in op Bitcare
 
-### Stap 1 - Ga naar de Foto Pagina
+### Stap 1: Ga naar de Foto's Pagina
 
-Alleen weergegeven foto's worden gedownload.
-Om alle foto's te downloaden, blijf op de `Meer tonen`-knop drukken totdat alle foto's zichtbaar zijn.
+- Alleen weergegeven foto's worden gedownload.
+- Om alle foto's te downloaden, blijf op de knop 'Meer weergeven' drukken totdat alle foto's zichtbaar zijn.
 
-### Stap 2 - Bereid je browser voor
+### Stap 2: Bereid je browser voor
 
 #### Safari:
-1.  Schakel de ontwikkelaarstools in:
+1. Schakel ontwikkelaarshulpmiddelen in:
+   - Navigeer naar instellingen
+   - Klik op het tabblad 'Geavanceerd'
+   - Schakel 'Functies tonen voor webontwikkelaars' in
 
-   *   Ga naar instellingen
-   *   Klik op het tabblad `Geavanceerd`
-   *   Schakel `Functies tonen voor webontwikkelaars` in
-
-2.  Open de JavaScript-console:
-
-   *   In de menubalk, ga naar `Ontwikkelen` > `JavaScript-console tonen`
+2. Open de JavaScript-console:
+   - In de menubalk, ga naar 'Ontwikkelen' > 'JavaScript-console tonen'
 
 #### Chrome of Brave:
-1.  Schakel pop-ups voor bestandslocatie uit:
+1. Schakel pop-ups voor bestandslocaties uit:
+   - Navigeer naar instellingen
+   - Ga naar het tabblad 'Downloads'
+   - Schakel 'Vragen waar elk bestand moet worden opgeslagen' uit
 
-   *   Ga naar instellingen
-   *   Ga naar het tabblad `Downloads`
-   *   Schakel `Vragen waar elk bestand moet worden opgeslagen voordat het wordt gedownload` uit
+2. Open de JavaScript-console:
+   - In de menubalk, ga naar 'Weergave' > 'Ontwikkelaar' > 'JavaScript-console tonen'
 
-2.  Open de JavaScript-console:
+### Stap 3: Download alle foto's
 
-   *   In de menubalk, ga naar `Weergave` > `Ontwikkelaar` > `JavaScript-console tonen`
+Kopieer en plak de [JavaScript-code](#javascript-code) in de console (na het `>` teken), druk op enter en wacht. 
+Foto's verschijnen in je downloads.
 
-### Stap 3 - Download alle foto's
+### Extra aantekeningen
 
-Kopieer-plak de [JavaScript-code](#javaScript-code) hieronder in de console (na het `>` teken), druk op Enter en wacht.
-Foto's zullen verschijnen in je downloads.
-
-### Aanvullende notities
-
-*   Foto's hebben hun unieke ID als bestandsnaam en zijn in de originele/volle resolutie.
-*   De downloadvolgorde zal van oud naar nieuw zijn.
-    Zo biedt de bestandstijd de volgorde van verschijning op bitcare (sorteer op datum, oud naar nieuw).
-
+- Foto's hebben een unieke ID als bestandsnaam en zijn in de originele/volle resolutie.
+- De downloadvolgorde is van oud naar nieuw, gebaseerd op de bestandstijd.
+  Sorteer op datum, oud naar nieuw, om de volgorde van verschijnen op Bitcare te zien.
 
 ## JavaScript code
 ```javascript
