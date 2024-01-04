@@ -1,25 +1,95 @@
 # bitcare-photos
-A simple javascript trick to download all photos from your child's bitcare profile.
+A simple JavaScript trick to download all photos from your child's bitcare profile.
 
-## Go the photos and show all
-Navigate to the photos page. **Only displayed photos** will be downloaded (at the original/full resolution). 
+Step-by-step instructions in [English](#instructions) & [Nederlands](#instructies).
+
+## Instructions
+
+### Step 1 - Navigate to the Photos Page
+
+Only displayed photos will be downloaded. 
 To download all photos keep pressing the `Show more` button until all photos are shown.
 
-Photos will get their unique id as filename. 
-The download order is from old to new as such that the file timestamp will give the correct order (sort by date, old to new).
+### Step 2 - Prepare your browser
 
-## Download all photos
-### using Safari:
-1. Enable developer tools: navigate to `settings` > `advanced` > enable `Show features for web developers`
-2. Open the JavaScript console: navigate to `Develop` > `Show JavaScript Console` (or simply press `Option` + `Command` + `C`)
-3. Copy-paste the JavaScript code below, press enter and wait. Photos shall start flying in to your downloads.
+#### Safari:
+1.  Enable developer tools:
 
-### using Chrome or Brave:
-1. Disable file location pop-ups: navigate to `settings` > `downloads` > disable `Ask where to save each file before downloading`
-2. Open the JavaScript console: navigate to `View` > `Developer` > `Show JavaScript Console` (or simply press `Option` + `Command` + `J`)
-3. Copy-paste the JavaScript code below, press enter and wait. Photos shall be appear in your downloads.
+   *   Navigate to settings
+   *   Click on the `Advanced`-tab
+   *   Enable `Show features for web developers`
 
-## JavaScript code ready to use (simply Copy and Paste!)
+2.  Open the JavaScript console:
+
+   *   In the menu bar, go to `Develop` > `Show JavaScript Console`
+
+#### Chrome or Brave:
+1.  Disable file location pop-ups:
+
+   *   Navigate to settings
+   *   Go to the `Downloads`-tab
+   *   Disable `Ask where to save each file before downloading`
+
+2.  Open the JavaScript console:
+
+   *   In the menu bar, go to `View` > `Developer` > `Show JavaScript Console`
+
+### Step 3 - Download all photos
+
+Copy-paste the [JavaScript code](#javascript-code) below, press enter and wait. 
+Photos shall be appear in your downloads.
+
+### Additional Notes
+
+*   Photos have their unique id as filename and the original/full resolution.
+*   The download order shall be from old to new.
+    As such, the file timestamp provides the order of appearence on bitcare (sort by date, old to new).
+
+
+## Instructies
+
+### Stap 1 - Ga naar de Foto Pagina
+
+Alleen weergegeven foto's worden gedownload.
+Om alle foto's te downloaden, blijf op de `Meer tonen`-knop drukken totdat alle foto's zichtbaar zijn.
+
+### Stap 2 - Bereid je browser voor
+
+#### Safari:
+1.  Schakel de ontwikkelaarstools in:
+
+   *   Ga naar instellingen
+   *   Klik op het tabblad `Geavanceerd`
+   *   Schakel `Functies tonen voor webontwikkelaars` in
+
+2.  Open de JavaScript-console:
+
+   *   In de menubalk, ga naar `Ontwikkelen` > `JavaScript-console tonen`
+
+#### Chrome of Brave:
+1.  Schakel pop-ups voor bestandslocatie uit:
+
+   *   Ga naar instellingen
+   *   Ga naar het tabblad `Downloads`
+   *   Schakel `Vragen waar elk bestand moet worden opgeslagen voordat het wordt gedownload` uit
+
+2.  Open de JavaScript-console:
+
+   *   In de menubalk, ga naar `Weergave` > `Ontwikkelaar` > `JavaScript-console tonen`
+
+### Stap 3 - Download alle foto's
+
+Kopieer-plak de [JavaScript-code](#javaScript-code) hieronder, druk op Enter en wacht.
+Foto's zullen verschijnen in je downloads.
+
+### Aanvullende notities
+
+*   Foto's hebben hun unieke ID als bestandsnaam en zijn in de originele/volle resolutie.
+*   De downloadvolgorde zal van oud naar nieuw zijn.
+    Zo biedt de bestandstijd de volgorde van verschijning op bitcare (sorteer op datum, oud naar nieuw).
+
+
+## JavaScript code
 ```javascript
 // Function to download a file asynchronously
 function downloadFileAsync(url, fileName) {
