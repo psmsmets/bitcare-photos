@@ -1,5 +1,5 @@
 # bitcare-photos
-A simple JavaScript trick to download all photos from your child's bitcare profile.
+A simple JavaScript solution to download all photos automatically from your child's bitcare profile.
 
 Step-by-step instructions in [English](#instructions) & [Nederlands](#instructies).
 
