@@ -156,6 +156,6 @@ async function processImagesAsync(prefix = '', useCounter = true, offsetCounter 
 // Set the prefix to your child's name (white spaces are replaced by underscores).
 var prefix = document.querySelector(".h2").textContent.replaceAll(' ', '_') + '_';
 
-// Call the asynchronous function with an optional prefix, reversed order, and useCounter parameter
+// Call the asynchronous function with an optional prefix, useCounter parameter, and the offsetCounter value
 processImagesAsync(prefix, true, 0);
 ```
