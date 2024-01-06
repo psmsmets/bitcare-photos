@@ -1,7 +1,8 @@
 # bitcare-photos
+
 A simple JavaScript solution to download all photos automatically from your child's bitcare profile.
 
-Step-by-step instructions in [English](#instructions) & [Nederlands](#instructies).
+Step-by-step instructions are available in [English](#instructions) and [Nederlands](#instructies).
 
 ## Instructions
 
@@ -15,6 +16,7 @@ Step-by-step instructions in [English](#instructions) & [Nederlands](#instructie
 ### Step 2: Prepare your browser
 
 #### Safari:
+
 1. Enable developer tools:
    - Navigate to settings.
    - Click on the `Advanced` tab.
@@ -24,6 +26,7 @@ Step-by-step instructions in [English](#instructions) & [Nederlands](#instructie
    - In the menu bar, go to `Develop` > `Show JavaScript Console`.
 
 #### Chrome or Brave:
+
 1. Disable file location pop-ups:
    - Navigate to settings.
    - Go to the `Downloads` tab.
@@ -34,8 +37,7 @@ Step-by-step instructions in [English](#instructions) & [Nederlands](#instructie
 
 ### Step 3: Download all photos
 
-Copy-paste the [JavaScript code](#javascript-code) into the console (after the `>` sign), press enter, and wait. 
-Photos will appear in your downloads.
+Copy-paste the [JavaScript code](#javascript-code) into the console (after the `>` sign), press enter, and wait. Photos will appear in your downloads.
 
 ### Additional Notes
 
@@ -43,10 +45,9 @@ Photos will appear in your downloads.
 - The download order is from oldest to newest.
 - The default `prefix` of each photo is your child's name. Modify the variable `prefix` to set an alternative prefix. Leave it blank to disable.
 - The filename is either based on the unique ID, as defined by Bitcare, or based on a counter.
-   * `useCounter=true` (default) sets the filenames based on a counter to preserve the order of appearance on Bitcare.
-   * Optionally provide an `offsetCounter` value to start counting from a specific value (defaults to `0`).
-   * `useCounter=false` disables renaming all photos and uses the unique ID.
-     Sort the photos with the unique ID by date, old to new, to see the order of appearance on the Bitcare photos page.
+  - `useCounter=true` (default) sets the filenames based on a counter to preserve the order of appearance on Bitcare.
+  - Optionally provide an `offsetCounter` value to start counting from a specific value (defaults to `0`).
+  - `useCounter=false` disables renaming all photos and uses the unique ID. Sort the photos with the unique ID by date, old to new, to see the order of appearance on the Bitcare photos page.
 
 ## Instructies
 
@@ -60,6 +61,7 @@ Photos will appear in your downloads.
 ### Stap 2: Bereid je browser voor
 
 #### Safari:
+
 1. Schakel ontwikkelaarshulpmiddelen in:
    - Ga naar instellingen.
    - Klik op het tabblad `Geavanceerd`.
@@ -69,6 +71,7 @@ Photos will appear in your downloads.
    - In de menubalk, ga naar `Ontwikkel` > `Toon JavaScript-console`.
 
 #### Chrome of Brave:
+
 1. Schakel pop-ups voor bestandslocaties uit:
    - Ga naar instellingen.
    - Ga naar het tabblad `Downloads`.
@@ -79,8 +82,7 @@ Photos will appear in your downloads.
 
 ### Stap 3: Download alle foto's
 
-Kopieer en plak de [JavaScript-code](#javascript-code) in de console (na het `>` teken), druk op enter en wacht.
-De foto's verschijnen in je downloads.
+Kopieer en plak de [JavaScript-code](#javascript-code) in de console (na het `>` teken), druk op enter en wacht. De foto's verschijnen in je downloads.
 
 ### Aanvullende notities
 
@@ -88,10 +90,10 @@ De foto's verschijnen in je downloads.
 - De downloadvolgorde is van oud naar nieuw.
 - De standaard `prefix` van elke foto is de naam van je kind. Pas de variabele `prefix` aan om een alternatieve voorvoegsel in te stellen. Laat het leeg om uit te schakelen.
 - De bestandsnaam is gebaseerd op de unieke ID, zoals gedefinieerd door Bitcare, of op een teller.
-   * `useCounter=true` (standaard) stelt de bestandsnamen in op basis van een teller om de volgorde van verschijning op Bitcare te behouden.
-   * Geef optioneel een `offsetCounter`-waarde op om te beginnen tellen vanaf een specifieke waarde (standaard is `0`).
-   * `useCounter=false` schakelt het hernoemen van alle foto's uit en gebruikt de unieke ID.
-     Sorteer de foto's met de unieke ID op datum, oud naar nieuw, om de volgorde van verschijning op de Bitcare-fotopagina te zien.
+  - `useCounter=true` (standaard) stelt de bestandsnamen in op basis van een teller om de volgorde van verschijning op Bitcare te behouden.
+  - Geef optioneel een `offsetCounter`-waarde op om te beginnen tellen vanaf een specifieke waarde (standaard is `0`).
+  - `useCounter=false` schakelt het hernoemen van alle foto's uit en gebruikt de unieke ID. Sorteer de foto's met de unieke ID op datum, oud naar nieuw, om de volgorde van verschijning op de Bitcare-fotopagina te zien.
+
 
 ## JavaScript code
 ```javascript
