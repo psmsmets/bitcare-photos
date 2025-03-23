@@ -1,3 +1,5 @@
+![Status](https://img.shields.io/badge/status-in--progress-yellow)
+
 # bitcare-photos
 
 A simple JavaScript solution to download all photos automatically from your child's bitcare profile.
