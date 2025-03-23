@@ -4,6 +4,8 @@ A simple JavaScript solution to download all photos automatically from your chil
 
 Step-by-step instructions are available in [English](#instructions) and [Nederlands](#instructies).
 
+> 🚧 **In Progress**: I'm working on a Chrome plugin to show and download all photos from Bitcare.
+
 ## Instructions
 
 ### Step 0: Login to Bitcare
