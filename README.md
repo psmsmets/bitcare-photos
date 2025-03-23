@@ -1,4 +1,6 @@
-![Status](https://img.shields.io/badge/status-in--progress-yellow)
+![Base Script](https://img.shields.io/badge/Base%20Code-Working-brightgreen)
+![Chrome Extension](https://img.shields.io/badge/Chrome%20Extension-In%20Progress-yellow)
+
 
 # bitcare-photos
 
