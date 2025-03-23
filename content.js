@@ -1,3 +1,11 @@
+// At the top of content.js
+const url = window.location.href;
+if (!url.match(/^https:\/\/app\.bitcare\.com\/contacts\/\d+[#/]?\/?photos?$/) &&
+    !url.endsWith("#/photos")) {
+  console.log("Not on a photos page — script won't run.");
+  return;
+}
+
 // --- Download helper ---
 function downloadFileAsync(url, fileName) {
   return new Promise((resolve) => {
