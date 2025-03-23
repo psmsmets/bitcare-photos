@@ -28,17 +28,20 @@ function downloadFileAsync(url, fileName) {
 
 // --- Load all "Toon meer" buttons ---
 async function showAllPhotos() {
+  const knownLabels = ["Toon meer", "Show more", "Mehr anzeigen", "Afficher plus"];
   let tries = 0;
-  while (true) {
-    const btn = [...document.querySelectorAll("button")]
-      .find(b => b.textContent.trim() === "Toon meer");
 
-    if (!btn || btn.disabled || tries > 30) break;
+  while (tries < 30) {
+    const btn = [...document.querySelectorAll("button")]
+      .find(b => knownLabels.includes(b.textContent.trim()));
+
+    if (!btn || btn.disabled) break;
 
     btn.click();
     await new Promise(resolve => setTimeout(resolve, 1000));
     tries++;
   }
+
   alert("Alle foto's zijn geladen!");
 }
 
