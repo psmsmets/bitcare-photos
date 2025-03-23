@@ -67,23 +67,69 @@ function createControlPanel() {
   panel.style.padding = '10px';
   panel.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
   panel.style.zIndex = 9999;
+  panel.style.fontFamily = 'sans-serif';
+  panel.style.fontSize = '14px';
 
+  const h2 = document.querySelector(".h2");
+  const defaultPrefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : '';
+
+  // Input: Prefix
+  const prefixLabel = document.createElement('label');
+  prefixLabel.textContent = "Bestandsnaam prefix:";
+  const prefixInput = document.createElement('input');
+  prefixInput.type = 'text';
+  prefixInput.value = defaultPrefix;
+  prefixInput.style.width = '100%';
+  prefixInput.style.marginBottom = '8px';
+
+  // Input: Offset
+  const offsetLabel = document.createElement('label');
+  offsetLabel.textContent = "Offset nummer:";
+  const offsetInput = document.createElement('input');
+  offsetInput.type = 'number';
+  offsetInput.value = '0';
+  offsetInput.min = '0';
+  offsetInput.style.width = '100%';
+  offsetInput.style.marginBottom = '8px';
+
+  // Checkbox: Use counter
+  const counterLabel = document.createElement('label');
+  const counterInput = document.createElement('input');
+  counterInput.type = 'checkbox';
+  counterInput.checked = true;
+  counterLabel.appendChild(counterInput);
+  counterLabel.append(" Nummering gebruiken (anders: originele bestandsnamen)");
+  counterLabel.style.display = 'block';
+  counterLabel.style.marginBottom = '8px';
+
+  // Button: Load all
   const loadBtn = document.createElement('button');
   loadBtn.textContent = "📂 Laad alle foto's";
   loadBtn.style.marginBottom = '8px';
+  loadBtn.style.width = '100%';
   loadBtn.onclick = showAllPhotos;
 
+  // Button: Download
   const downloadBtn = document.createElement('button');
   downloadBtn.textContent = "💾 Download alle foto's";
+  downloadBtn.style.width = '100%';
   downloadBtn.onclick = async () => {
-    const h2 = document.querySelector(".h2");
-    const prefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : '';
-    await processImagesAsync(prefix, true, 0);
+    const prefix = prefixInput.value;
+    const offset = parseInt(offsetInput.value, 10) || 0;
+    const useCounter = counterInput.checked;
+
+    await processImagesAsync(prefix, useCounter, offset);
   };
 
+  // Append elements
+  panel.appendChild(prefixLabel);
+  panel.appendChild(prefixInput);
+  panel.appendChild(offsetLabel);
+  panel.appendChild(offsetInput);
+  panel.appendChild(counterLabel);
   panel.appendChild(loadBtn);
-  panel.appendChild(document.createElement('br'));
   panel.appendChild(downloadBtn);
+
   document.body.appendChild(panel);
 }
 
