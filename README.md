@@ -1,5 +1,5 @@
 ![Base Script](https://img.shields.io/badge/Base%20Code-Working-brightgreen)
-![Chrome Extension](https://img.shields.io/badge/Chrome%20Extension-In%20Progress-yellow)
+![Chrome Extension](https://img.shields.io/badge/Chrome%20Extension-Testing-orange)
 
 
 # bitcare-photos
