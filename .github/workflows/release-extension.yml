@@ -3,7 +3,10 @@ name: Package & Release Chrome Extension
 on:
   push:
     tags:
-      - 'v*'  # e.g. v1.0.0
+      - 'v*'
+
+permissions:
+  contents: write
 
 jobs:
   build-and-release:
@@ -24,5 +27,4 @@ jobs:
           name: Release ${{ github.ref_name }}
           tag_name: ${{ github.ref_name }}
           files: bitcare-photo-downloader.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          token: ${{ secrets.GH_PAT }}
