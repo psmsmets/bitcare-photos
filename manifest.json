@@ -2,11 +2,7 @@
   "manifest_version": 3,
   "name": "Bitcare Photo Downloader",
   "version": "1.0",
-  "description": "Loads and downloads all photos from Bitcare with customizable options.",
-  "icons": {
-    "48": "icon.png",
-    "128": "icon.png"
-  },
+  "description": "Loads and downloads all photos from Bitcare.",
   "content_scripts": [
     {
       "matches": ["https://app.bitcare.com/contacts/*"],
@@ -17,5 +13,9 @@
   "action": {
     "default_icon": "icon.png",
     "default_title": "Bitcare Photo Downloader"
+  },
+  "icons": {
+    "48": "icon.png",
+    "128": "icon.png"
   }
 }
