@@ -1,0 +1,28 @@
+name: Package & Release Chrome Extension
+
+on:
+  push:
+    tags:
+      - 'v*'  # e.g. v1.0.0
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🗜️ Zip Chrome extension
+        run: |
+          cd bitcare-photo-downloader
+          zip -r ../bitcare-photo-downloader.zip . -x "*.DS_Store"
+
+      - name: 🚀 Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Release ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          files: bitcare-photo-downloader.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
