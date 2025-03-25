@@ -46,7 +46,7 @@ function downloadFileAsync(url, fileName) {
       setTimeout(() => {
         document.body.removeChild(anchor);
         resolve();
-      }, 150);
+      }, 200);
     });
 
     anchor.click();
@@ -66,7 +66,7 @@ async function showAllPhotos() {
     tries++;
   }
 
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  await new Promise(resolve => setTimeout(resolve, 3000));
 
   const h2 = document.querySelector(".h2");
   const prefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : 'foto_';
