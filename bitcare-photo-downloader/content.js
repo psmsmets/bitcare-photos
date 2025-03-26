@@ -59,11 +59,16 @@ function downloadFileAsync(url, fileName) {
 }
 
 // --- Handle photo updates ---
-function handlePhotoUpdates() {
-  const h2 = document.querySelector(".h2");
-  const prefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : 'foto_';
-  updateCounterDisplay(prefix);
-  updatePhotoHighlights();
+function handlePhotoUpdates(timeout = 1000) {
+  setTimeout(() => {
+    window.scrollTo(0, document.body.scrollHeight);
+    setTimeout(() => {
+      const h2 = document.querySelector(".h2");
+      const prefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : 'foto_';
+      updateCounterDisplay(prefix);
+      updatePhotoHighlights();
+    }, timeout);
+  }, timeout);
 }
 
 // --- Load all photos ---
@@ -79,7 +84,7 @@ async function showAllPhotos() {
       setTimeout(() => {
         handlePhotoUpdates();
         alert(`Alle foto's zijn geladen! 📷 Aantal gevonden foto's: ${getVisiblePhotoCount()}`);
-      }, 2000);
+      }, 1000);
     } else {
       btn.click();
       tries++;
@@ -87,14 +92,21 @@ async function showAllPhotos() {
   }, 1500);
 }
 
+
+// --- Lijst met mogelijke vertalingen voor "toon meer" ---
+const showMoreTranslations = [
+  "Toon meer",
+  "Show more",
+  "Mehr anzeigen",
+  "Afficher plus",
+  "Mostrar más"
+];
+
 // --- Detect manual "Toon meer" clicks ---
-document.addEventListener('click', (e) => {
-  const btn = e.target.closest('button.btn.btn-default');
-  if (btn && btn.textContent.includes("Toon meer")) {
-    setTimeout(() => {
-      window.scrollTo(0, document.body.scrollHeight);
-      handlePhotoUpdates();
-    }, 2000);
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest("button.btn.btn-default");
+  if (btn && showMoreTranslations.some(phrase => btn.textContent.includes(phrase))) {
+    handlePhotoUpdates();
   }
 });
 
