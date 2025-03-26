@@ -1,3 +1,8 @@
+// == Bitcare Photo Downloader ==
+// Dit script voegt een controlepaneel toe aan de Bitcare fotopagina,
+// laat toe om alle foto's te downloaden met behoud van volgorde,
+// slaat reeds gedownloade foto's lokaal op, en markeert ze visueel.
+
 // --- Utilities: Local storage per prefix ---
 function getStorageKeyForPrefix(prefix) {
   return {
@@ -53,30 +58,47 @@ function downloadFileAsync(url, fileName) {
   });
 }
 
-// --- Load all "Toon meer" buttons ---
+// --- Handle photo updates ---
+function handlePhotoUpdates() {
+  const h2 = document.querySelector(".h2");
+  const prefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : 'foto_';
+  updateCounterDisplay(prefix);
+  updatePhotoHighlights();
+}
+
+// --- Load all photos ---
 async function showAllPhotos() {
   let tries = 0;
-
-  while (tries < 50) {
-    const btn = document.querySelector('div.text-center.mt-3 > button.btn.btn-default');
-    if (!btn || btn.disabled) break;
-
-    btn.click();
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    tries++;
-  }
-
-  await new Promise(resolve => setTimeout(resolve, 3000));
-
   const h2 = document.querySelector(".h2");
   const prefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : 'foto_';
 
-  const count = getVisiblePhotoCount();
-  updateCounterDisplay(prefix);
-  updatePhotoHighlights();
-  alert(`Alle foto's zijn geladen! 📷 Aantal gevonden foto's: ${count}`);
+  const interval = setInterval(() => {
+    const btn = document.querySelector('div.text-center.mt-3 > button.btn.btn-default');
+    if (!btn || btn.disabled || tries >= 50) {
+      clearInterval(interval);
+      setTimeout(() => {
+        handlePhotoUpdates();
+        alert(`Alle foto's zijn geladen! 📷 Aantal gevonden foto's: ${getVisiblePhotoCount()}`);
+      }, 2000);
+    } else {
+      btn.click();
+      tries++;
+    }
+  }, 1500);
 }
 
+// --- Detect manual "Toon meer" clicks ---
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('button.btn.btn-default');
+  if (btn && btn.textContent.includes("Toon meer")) {
+    setTimeout(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+      handlePhotoUpdates();
+    }, 2000);
+  }
+});
+
+// --- Utility ---
 function getVisiblePhotoCount() {
   return document.querySelectorAll('.photo-gallery-grid-item img[src*="/photos/"]').length;
 }
@@ -118,7 +140,7 @@ async function processImagesAsync(prefix) {
   updatePhotoHighlights();
 }
 
-// --- Mark downloaded photos in the grid ---
+// --- Mark downloaded photos ---
 function updatePhotoHighlights() {
   const h2 = document.querySelector(".h2");
   const prefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : 'foto_';
@@ -131,8 +153,6 @@ function updatePhotoHighlights() {
     if (!match || !wrapper) return;
 
     const uuid = match[1];
-
-    // verwijder vorige markering
     const existingMark = wrapper.querySelector('.bitcare-downloaded-mark');
     if (existingMark) existingMark.remove();
 
@@ -180,7 +200,6 @@ function createControlPanel() {
   const h2 = document.querySelector(".h2");
   const prefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : 'foto_';
 
-  // Titel + sluitknop
   const titleBar = document.createElement('div');
   titleBar.style.display = 'flex';
   titleBar.style.justifyContent = 'space-between';
@@ -195,21 +214,17 @@ function createControlPanel() {
   closeBtn.style.fontSize = '18px';
   closeBtn.style.cursor = 'pointer';
   closeBtn.onclick = () => panel.remove();
-
   titleBar.appendChild(closeBtn);
 
-  // Prefix display
   const prefixDisplay = document.createElement('div');
   prefixDisplay.textContent = `Prefix: ${prefix}`;
   prefixDisplay.style.marginBottom = '8px';
 
-  // Counter
   const counterDisplay = document.createElement('div');
   counterDisplay.id = 'bitcare-download-counter';
   counterDisplay.style.marginBottom = '8px';
   counterDisplay.style.whiteSpace = 'pre-line';
 
-  // Buttons
   const loadBtn = document.createElement('button');
   loadBtn.textContent = "📂 Laad alles";
   loadBtn.style.marginBottom = '8px';
@@ -254,15 +269,13 @@ function createControlPanel() {
 
 function updateCounterDisplay(prefix) {
   const label = document.getElementById('bitcare-download-counter');
-  if (label) {
-    const visible = getVisiblePhotoCount();
-    const downloaded = getDownloadedUUIDs(prefix).size;
-    const lastNumber = getPrefixCounter(prefix);
-    label.textContent = `📷 Zichtbaar: ${visible}\n💾 Gedownload: ${downloaded} (laatste nr: ${lastNumber})`;
-  }
+  if (!label) return;
+  const visible = getVisiblePhotoCount();
+  const downloaded = getDownloadedUUIDs(prefix).size;
+  const lastNumber = getPrefixCounter(prefix);
+  label.textContent = `📷 Zichtbaar: ${visible}\n💾 Gedownload: ${downloaded} (laatste nr: ${lastNumber})`;
 }
 
-// --- Drag support ---
 function makePanelDraggable(panel) {
   let isDragging = false;
   let offsetX = 0;
@@ -288,7 +301,6 @@ function makePanelDraggable(panel) {
   });
 }
 
-// --- Monitor tab changes ---
 function isOnPhotosTab() {
   return location.pathname.startsWith("/contacts/") && location.hash.endsWith("#/photos");
 }
@@ -323,9 +335,8 @@ function waitForPhotosPageAndInit() {
     }
   }, 500);
 
-  setTimeout(() => clearInterval(interval), 10_000);
+  setTimeout(() => clearInterval(interval), 10000);
 }
 
-// --- Start monitoring ---
 window.addEventListener('load', waitForPhotosPageAndInit);
 window.addEventListener('hashchange', waitForPhotosPageAndInit);
