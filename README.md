@@ -1,14 +1,15 @@
 ![Base Script](https://img.shields.io/badge/Base%20Code-Working-brightgreen)
-![Chrome Extension](https://img.shields.io/badge/Chrome%20Extension-Testing-orange)
+![Chrome Extension](https://img.shields.io/badge/Chrome%20Extension-Published-brightgreen)
 
+# Bitcare Photo Downloader
 
-# bitcare-photos
+🚀 The simplest way to download all photos from your child's Bitcare profile is to use a Chromium-based browser (Brave, Chrome, or Edge) and install the [Bitcare Photo Downloader extension](https://chromewebstore.google.com/detail/bitcare-photo-downloader/hpeeoooplbcbgejecoikjphekgjdpifn) from the Chrome Web Store.
 
-A simple JavaScript solution to download all photos automatically from your child's bitcare profile.
+🧘 Alternatively, if you prefer not to use the extension, you can follow the manual instructions to run the JavaScript code and automatically download all photos.
+
+---
 
 Step-by-step instructions are available in [English](#instructions) and [Nederlands](#instructies).
-
-> 🚧 **In Progress**: I'm working on a Chrome plugin to show and download all photos from Bitcare.
 
 ## Instructions
 
