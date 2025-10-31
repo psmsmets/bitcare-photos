@@ -58,13 +58,33 @@ function downloadFileAsync(url, fileName) {
   });
 }
 
+// --- Handle name ---
+function getName() {
+  let el = document.querySelector(".h2");
+  console.log(el);
+
+  if (!el) {
+    el = document.querySelector(".employee-name a");
+    console.log(el);
+  }
+  console.log(el);
+
+  return el ? el.textContent.trim() : null;
+}
+
+function getPrefix() {
+  const name = getName();
+  const prefix = name ? name.replaceAll(' ', '_') + '_' : 'foto_';
+  return prefix
+}
+
 // --- Handle photo updates ---
 function handlePhotoUpdates(timeout = 1000) {
   setTimeout(() => {
     window.scrollTo(0, document.body.scrollHeight);
     setTimeout(() => {
-      const h2 = document.querySelector(".h2");
-      const prefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : 'foto_';
+      const name = getName();
+      const prefix = getPrefix();
       updateCounterDisplay(prefix);
       updatePhotoHighlights();
     }, timeout);
@@ -74,8 +94,8 @@ function handlePhotoUpdates(timeout = 1000) {
 // --- Load all photos ---
 async function showAllPhotos() {
   let tries = 0;
-  const h2 = document.querySelector(".h2");
-  const prefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : 'foto_';
+  const name = getName();
+  const prefix = getPrefix();
 
   const interval = setInterval(() => {
     const btn = document.querySelector('div.text-center.mt-3 > button.btn.btn-default');
@@ -91,7 +111,6 @@ async function showAllPhotos() {
     }
   }, 1500);
 }
-
 
 // --- Lijst met mogelijke vertalingen voor "toon meer" ---
 const showMoreTranslations = [
@@ -154,8 +173,8 @@ async function processImagesAsync(prefix) {
 
 // --- Mark downloaded photos ---
 function updatePhotoHighlights() {
-  const h2 = document.querySelector(".h2");
-  const prefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : 'foto_';
+  const name = getName();
+  const prefix = getPrefix();
   const downloaded = getDownloadedUUIDs(prefix);
 
   const images = document.querySelectorAll('.photo-gallery-grid-item img[src*="/photos/"]');
@@ -209,15 +228,15 @@ function createControlPanel() {
   panel.style.boxSizing = 'border-box';
   panel.style.cursor = 'move';
 
-  const h2 = document.querySelector(".h2");
-  const prefix = h2 ? h2.textContent.trim().replaceAll(' ', '_') + '_' : 'foto_';
+  const name = getName();
+  const prefix = getPrefix();
 
   const titleBar = document.createElement('div');
   titleBar.style.display = 'flex';
   titleBar.style.justifyContent = 'space-between';
   titleBar.style.alignItems = 'center';
   titleBar.style.marginBottom = '8px';
-  titleBar.innerHTML = `<strong>📸 Photo Downloader</strong>`;
+  titleBar.innerHTML = `<strong>📸 Photo Downloader v1.5</strong>`;
 
   const closeBtn = document.createElement('button');
   closeBtn.textContent = '×';
@@ -314,7 +333,7 @@ function makePanelDraggable(panel) {
 }
 
 function isOnPhotosTab() {
-  return location.pathname.startsWith("/contacts/") && location.hash.endsWith("#/photos");
+  return location.pathname.endsWith("/photos") || location.hash.startsWith("#/photos");
 }
 
 function removeControlPanel() {
@@ -337,10 +356,10 @@ function waitForPhotosPageAndInit() {
   console.log("[Bitcare Downloader] Waiting for content to load...");
 
   const interval = setInterval(() => {
-    const h2 = document.querySelector(".h2");
+    const name = getName();
     const photoImgs = document.querySelectorAll('img[src*="/photos/"]');
 
-    if (h2 && photoImgs.length > 0) {
+    if (name && photoImgs.length > 0) {
       clearInterval(interval);
       console.log("[Bitcare Downloader] DOM ready — creating panel");
       createControlPanel();
@@ -351,4 +370,12 @@ function waitForPhotosPageAndInit() {
 }
 
 window.addEventListener('load', waitForPhotosPageAndInit);
-window.addEventListener('hashchange', waitForPhotosPageAndInit);
+//window.addEventListener('hashchange', waitForPhotosPageAndInit);
+
+let lastHref = location.href;
+setInterval(() => {
+  if (location.href !== lastHref) {
+    lastHref = location.href;
+    waitForPhotosPageAndInit();
+  }
+}, 500);
