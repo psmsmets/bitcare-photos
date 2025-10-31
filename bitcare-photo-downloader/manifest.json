@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Bitcare Photo Downloader",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Download alle foto's van de Bitcare fotopagina van je kind(eren), overzichtelijk en automatisch.",
   "action": {
     "default_title": "Bitcare Photo Downloader",

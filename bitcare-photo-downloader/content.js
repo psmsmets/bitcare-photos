@@ -236,7 +236,7 @@ function createControlPanel() {
   titleBar.style.justifyContent = 'space-between';
   titleBar.style.alignItems = 'center';
   titleBar.style.marginBottom = '8px';
-  titleBar.innerHTML = `<strong>📸 Photo Downloader v1.5</strong>`;
+  titleBar.innerHTML = `<strong>📸 Photo Downloader</strong>`;
 
   const closeBtn = document.createElement('button');
   closeBtn.textContent = '×';
